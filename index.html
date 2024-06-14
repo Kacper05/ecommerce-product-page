@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | E-commerce product page</title>
+  <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+  <header>
+    <div class="left_header">
+      <div class="hamburger"><img src="./images/icon-menu.svg"/></div>
+      <div class="logo">
+        <img src="./images/logo.svg"/>
+      </div>
+      <div class="navbar_menu">
+        <div class="menu-button">Collections</div>
+        <div class="menu-button">Men</div>
+        <div class="menu-button">Women</div>
+        <div class="menu-button">About</div>
+        <div class="menu-button">Contact</div>
+      </div>
+    </div>
+    <div class="right_header">
+      <div class="cart">
+        <img src="./images/icon-cart.svg"/>
+      </div>
+      <div class="avatar">
+        <img src="./images/image-avatar.png"/>
+      </div>
+    </div>
+  </header>
+  <div class="dropdown">
+    <div class="menu-button">Collections</div>
+    <div class="menu-button">Men</div>
+    <div class="menu-button">Women</div>
+    <div class="menu-button">About</div>
+    <div class="menu-button">Contact</div>
+  </div>
+  <main>
+    <div class="left_main">
+      <div class="main_image">
+          <img src="./images/image-product-1.jpg" id="image"/>
+      </div>
+      <div class="gallery">
+          <img id='1' src="./images/image-product-1-thumbnail.jpg" class="thumbnail"/>
+          <img id='2' src="./images/image-product-2-thumbnail.jpg" class="thumbnail"/>
+          <img id='3' src="./images/image-product-3-thumbnail.jpg" class="thumbnail"/>
+          <img id='4' src="./images/image-product-4-thumbnail.jpg" class="thumbnail"/>
+      </div>
+    </div>
+    <div class="rigth_main">
+        <div class="sub_title">Sneaker Company</div>
+        <div class="product_name">Fall Limited Edition Sneakers</div>
+        <div class="producct_desc">These low-profile sneakers are your perfect casual wear </br> companion. Featuring a
+        durable rubber outer sole, they’ll </br> withstand everything the weather can offer.</div>
+        <div class="price-box">
+            <div class="current-price">
+              <div class="main-price">$125.00</div>
+              <div class="discount">50%</div>
+            </div>
+          <div class="old-price">$250.00</div>
+        </div>
+        <div class="container">
+          <div class="add-value">
+            <div class="descrese"><img src="./images/icon-minus.svg"/></div>
+            <div class="value">0</div>
+            <div class="inscrese"><img src="./images/icon-plus.svg"/></div>
+          </div>
+          <div class="add-to-cart"><img src="./images/icon-cart.svg" /><div class="add-button">Add to cart</div></div>
+        </div>
+    </div>
+  </main>
+  <script>
+      counter = 0
+      a = 0
+      document.querySelector('.descrese').addEventListener('click',()=>{
+        if(counter > 0){
+          counter -=1
+          document.querySelector(".value").innerHTML = counter
+        }
+      })
+      document.querySelector('.inscrese').addEventListener('click',()=>{
+        counter +=1
+        document.querySelector(".value").innerHTML = counter
+      })
+      let presented_image = document.getElementById('image');
+      const thumbnails = document.getElementsByClassName('thumbnail');
+      thumbnails[0].style = "border: 0.15rem solid hsl(26, 100%, 55%);";
+      const ChangePicture = (e)=>{
+        picture_to_change = e.target.attributes.src.value.replace("-thumbnail","")
+        presented_image.src = picture_to_change;
+        for (let thumbnail of thumbnails) {
+          thumbnail.style = "width: 20%; border-radius: 0.5vw;";
+        }
+        e.target.style = "border: 0.15rem solid hsl(26, 100%, 55%);"
+      }
+      for (let thumbnail of thumbnails) {
+        thumbnail.addEventListener('click',ChangePicture)
+      }
+      document.querySelector('.hamburger').addEventListener('click',()=>{
+        if(a%2==0){
+            document.querySelector('.dropdown').style = "display:contents;"
+            a+=1
+        }
+        else{
+          document.querySelector('.dropdown').style = "display:none;"
+          a+=1
+        }
+      })
+  </script>
+</body>
+</html>
