@@ -1,3 +1,5 @@
+Strona dostępna na hostingu: https://kacper05.github.io/ecommerce-product-page/
+
 Do zrobienia:
   -przewijanie zdjec na mobilnej wersji aplikacji
   -menu na mobilej werski aplikacji
